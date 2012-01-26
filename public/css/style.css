@@ -1,0 +1,6 @@
+@CHARSET "ISO-8859-1";
+/* -- Application Font -- */
+@font-face {
+	font-family: 'appFont';
+	src: url('fonts/UBUNTU-C.TTF'); /* IE9 Compat Modes */
+	}
