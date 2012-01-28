@@ -15,4 +15,12 @@ set_include_path(implode(PATH_SEPARATOR, array(
 )));
 
 require_once 'Zend/Loader/Autoloader.php';
+require_once 'ModelTestCase.php';
+
 Zend_Loader_Autoloader::getInstance();
+
+$application = new Zend_Application(
+		APPLICATION_ENV,
+		APPLICATION_PATH . '/configs/application.ini');
+
+

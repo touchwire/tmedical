@@ -7,12 +7,24 @@
     </testsuite>
     
     <filter>
-        <!-- If Zend Framework is inside your project's library, uncomment this filter -->
-        <!-- 
         <whitelist>
-            <directory suffix=".php">../../library/Zend</directory>
+        	<directory suffix=".php">../application</directory>
+            <directory suffix=".php">../library</directory>
+            <exclude>
+            	<directory suffix=".phtml">../application</directory>
+            	<directory suffix=".php">../library/Doctrine</directory>
+            	<directory suffix=".php">../library/Bisna</directory>
+            	<directory suffix=".php">../library/Symfony</directory>
+            	<!-- 
+            		/* uncomment when Zend is added to lib ie deployment */
+            	
+            	<directory suffix=".php">../library/Zend</directory>
+            	
+            	 -->
+            	 <file>../application/Bootstrap.php</file>
+            </exclude>
         </whitelist>
-        -->
+        
     </filter>
     
     <logging>
