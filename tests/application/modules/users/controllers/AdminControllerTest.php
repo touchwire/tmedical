@@ -9,89 +9,84 @@ class Users_AdminControllerTest extends Zend_Test_PHPUnit_ControllerTestCase
         parent::setUp();
     }
 
-    public function testIndexAction()
+    public function testCanDisplayUserAdminIndex()
     {
-        $params = array('action' => 'index', 'controller' => 'Admin', 'module' => 'users');
-        $urlParams = $this->urlizeOptions($params);
-        $url = $this->url($urlParams);
-        $this->dispatch($url);
+        // go to the main page of the web application
+        $this->dispatch('/users/admin/');
         
-        // assertions
-        $this->assertModule($urlParams['module']);
-        $this->assertController($urlParams['controller']);
-        $this->assertAction($urlParams['action']);
-        $this->assertQueryContentContains(
-            'div#view-content p',
-            'View script for controller <b>' . $params['controller'] . '</b> and script/action name <b>' . $params['action'] . '</b>'
-            );
+		// check if we don't end up on an error page
+        $this->assertNotController('error');
+        $this->assertNotAction('error');
+        
+		// ok, no error so let's see if we're at our homepage
+        $this->assertModule('users');
+        $this->assertController('admin');
+        $this->assertAction('index');
+        $this->assertResponseCode(200);
     }
 
-    public function testCreateAction()
+    public function testCanDisplayUserAdminCreatePage()
     {
-        $params = array('action' => 'create', 'controller' => 'Admin', 'module' => 'users');
-        $urlParams = $this->urlizeOptions($params);
-        $url = $this->url($urlParams);
-        $this->dispatch($url);
+        // go to the main page of the web application
+        $this->dispatch('/users/admin/create');
         
-        // assertions
-        $this->assertModule($urlParams['module']);
-        $this->assertController($urlParams['controller']);
-        $this->assertAction($urlParams['action']);
-        $this->assertQueryContentContains(
-            'div#view-content p',
-            'View script for controller <b>' . $params['controller'] . '</b> and script/action name <b>' . $params['action'] . '</b>'
-            );
+		// check if we don't end up on an error page
+        $this->assertNotController('error');
+        $this->assertNotAction('error');
+        
+		// ok, no error so let's see if we're at our homepage
+        $this->assertModule('users');
+        $this->assertController('admin');
+        $this->assertAction('create');
+        $this->assertResponseCode(200);
     }
 
-    public function testUpdateAction()
+    public function testCanDisplayUserAdminUpdatePage()
     {
-        $params = array('action' => 'update', 'controller' => 'Admin', 'module' => 'users');
-        $urlParams = $this->urlizeOptions($params);
-        $url = $this->url($urlParams);
-        $this->dispatch($url);
+        // go to the main page of the web application
+        $this->dispatch('/users/admin/update');
         
-        // assertions
-        $this->assertModule($urlParams['module']);
-        $this->assertController($urlParams['controller']);
-        $this->assertAction($urlParams['action']);
-        $this->assertQueryContentContains(
-            'div#view-content p',
-            'View script for controller <b>' . $params['controller'] . '</b> and script/action name <b>' . $params['action'] . '</b>'
-            );
+		// check if we don't end up on an error page
+        $this->assertNotController('error');
+        $this->assertNotAction('error');
+        
+		// ok, no error so let's see if we're at our homepage
+        $this->assertModule('users');
+        $this->assertController('admin');
+        $this->assertAction('update');
+        $this->assertResponseCode(200);
     }
 
-    public function testDeleteAction()
+    public function testCanDisplayUserAdminDeletePage()
     {
-        $params = array('action' => 'delete', 'controller' => 'Admin', 'module' => 'users');
-        $urlParams = $this->urlizeOptions($params);
-        $url = $this->url($urlParams);
-        $this->dispatch($url);
+        // go to the main page of the web application
+        $this->dispatch('/users/admin/delete');
         
-        // assertions
-        $this->assertModule($urlParams['module']);
-        $this->assertController($urlParams['controller']);
-        $this->assertAction($urlParams['action']);
-        $this->assertQueryContentContains(
-            'div#view-content p',
-            'View script for controller <b>' . $params['controller'] . '</b> and script/action name <b>' . $params['action'] . '</b>'
-            );
+		// check if we don't end up on an error page
+        $this->assertNotController('error');
+        $this->assertNotAction('error');
+        
+		// ok, no error so let's see if we're at our homepage
+        $this->assertModule('users');
+        $this->assertController('admin');
+        $this->assertAction('delete');
+        $this->assertResponseCode(200);
     }
 
-    public function testListAction()
+    public function testCanDisplayUserAdminListPage()
     {
-        $params = array('action' => 'list', 'controller' => 'Admin', 'module' => 'users');
-        $urlParams = $this->urlizeOptions($params);
-        $url = $this->url($urlParams);
-        $this->dispatch($url);
+        // go to the main page of the web application
+        $this->dispatch('/users/admin/list');
         
-        // assertions
-        $this->assertModule($urlParams['module']);
-        $this->assertController($urlParams['controller']);
-        $this->assertAction($urlParams['action']);
-        $this->assertQueryContentContains(
-            'div#view-content p',
-            'View script for controller <b>' . $params['controller'] . '</b> and script/action name <b>' . $params['action'] . '</b>'
-            );
+		// check if we don't end up on an error page
+        $this->assertNotController('error');
+        $this->assertNotAction('error');
+        
+		// ok, no error so let's see if we're at our homepage
+        $this->assertModule('users');
+        $this->assertController('admin');
+        $this->assertAction('list');
+        $this->assertResponseCode(200);
     }
 
 
