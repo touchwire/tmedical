@@ -9,18 +9,20 @@ class IndexControllerTest extends Zend_Test_PHPUnit_ControllerTestCase
         parent::setUp();
     }
 
-    public function testIndexAction()
+    public function testCanDisplayIndexPage()
     {
-        $params = array('action' => 'index', 'controller' => 'Index', 'module' => 'default');
-        $urlParams = $this->urlizeOptions($params);
-        $url = $this->url($urlParams);
-        $this->dispatch($url);
+        // go to the main page of the web application
+        $this->dispatch('/');
         
-        // assertions
-        $this->assertModule($urlParams['module']);
-        $this->assertController($urlParams['controller']);
-        $this->assertAction($urlParams['action']);
-        $this->assertQueryContentContains("div#welcome h3", "This is your project's main page");
+		// check if we don't end up on an error page
+        $this->assertNotController('error');
+        $this->assertNotAction('error');
+        
+		// ok, no error so let's see if we're at our homepage
+        $this->assertModule('default');
+        $this->assertController('index');
+        $this->assertAction('index');
+        $this->assertResponseCode(200);
     }
 
 
