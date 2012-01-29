@@ -1,3 +1,4 @@
 ubuntu fonts:
 p - use regular 0.8em
 h
+added ubuntu fonts to foundation .button class -- do same for input

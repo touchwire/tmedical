@@ -1,4 +1,42 @@
-<br /><br />
-<div id="view-content">
-	<p>View script for controller <b>Admin</b> and script/action name <b>list</b></p>
+<?php 
+ $users = $this->users;
+?>
+<div class="panel">
+	<h5>User List</h5>
+	<hr>
+	
+	<p><a href="<?php echo $this->url(array('action' => 'create')); ?>">Add New User</a></p>
+	
+	<?php if ($users):?>
+	<table>
+		<thead>
+			<th></th>
+			<th>Firstname</th>
+			<th>Lastname</th>
+			<th></th>
+		</thead>
+	<?php  foreach ($users as $user): ?>
+		<tr>
+			<td>
+			<?php echo $user->getId(); ?> 
+			</td>
+			<td>
+		 	<?php echo $user->getFirstname(); ?>
+		 	</td>
+		 	<td>
+		 	<?php echo $user->getLastname(); ?>
+		 	</td>
+		 	<td>
+		 	<a href="<?php echo $this->url(array('action' => 'update', 'id' => $user->getId())); ?>">
+        		Edit
+    		</a> |
+    		<a href="<?php echo $this->url(array('action' => 'delete', 'id' => $user->getId())); ?>">
+        		Delete
+    		</a>
+		 	</td>
+		</tr>
+	<?php endforeach; ?>
+	</table>
+	<?php endif; ?>
+
 </div>

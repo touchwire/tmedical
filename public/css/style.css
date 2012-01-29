@@ -148,3 +148,10 @@ margin: 0 auto;
 	text-align: center;
 	font-family: 'UbuntuCondensedRegular', Arial, sans-serif;
 }
+/* forms */
+input{
+	font-family: 'UbuntuRegular', Arial, sans-serif;
+}
+.blue-form{
+	background-color: #CAE1FF;
+}
