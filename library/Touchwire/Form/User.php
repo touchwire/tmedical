@@ -34,7 +34,7 @@ class Touchwire_Form_User extends EasyBib_Form
 
 		
 		$submit->setLabel('Save')
-			->setAttribs(array('class' => 'small blue nice button radius'));
+			->setAttribs(array('class' => 'small blue nice button radius save'));
 		
 		$cancel->setLabel('Cancel')
 			->setAttribs(array('class' => 'small red nice button radius'));

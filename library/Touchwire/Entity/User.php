@@ -32,7 +32,28 @@ class User{
 	 */
 	private $lastname;
 	
+	/**
+	 * 
+	 * @OneToOne(targetEntity="Profile",cascade={"persist", "remove"}  )
+	 * @JoinColumn(name="profile_id", referencedColumnName="id")
+	 */
+	private $profile;
 	
+	
+	/**
+	 * @return the $profile
+	 */
+	public function getProfile() {
+		return $this->profile;
+	}
+
+	/**
+	 * @param field_type $profile
+	 */
+	public function setProfile($profile) {
+		$this->profile = $profile;
+	}
+
 	/**
 	 * @return the $id
 	 */
