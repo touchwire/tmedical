@@ -10,9 +10,7 @@ class UserTest
 	}
 	
 	public function testCanSaveFirstAndLastname(){
-		$u = new User();
-		$u->setFirstname("John");
-		$u->setLastname("Musoke");
+		$u = $this->getTestUser() ;
 		
 		$em = $this->doctrineContainer->getEntityManager();
 		$em->persist($u);
@@ -23,17 +21,20 @@ class UserTest
 		
 		$this->assertEquals(1, count($users));
 		
-		$this->assertEquals('John', $users[0]->getFirstname());
-		$this->assertEquals('Musoke', $users[0]->getLastname());
+		$this->assertEquals('Patrick', $users[0]->getUsername());
+		$this->assertEquals('123', $users[0]->getPassword());
 	}
 	
 	public function testCanAddProfileToUser(){
-		$u = new User();
-		$u->setFirstname("John");
-		$u->setLastname("Musoke");	//create a function for this later
+		$u = $this->getTestUser() ;
+		//setup profile
 		$profile = new Profile();
-		$profile->setItem('Mukasa');
-		$profile->setDescription('This is the name of the user');
+		$profile->setFirstname('Mukasa');
+		$profile->setLastname('Patrick');
+		$profile->setGender('Male');
+		$profile->setEmail('me@you.com');
+		$profile->setAddress('P.O. Box 5151 Kampala');
+		$profile->setPhone('077123456');
 		
 		
 		$u->setProfile($profile);
@@ -48,6 +49,18 @@ class UserTest
 		$users = $em->createQuery('select u from Touchwire\Entity\User u')->execute();
 		
 		$this->assertEquals(1, count($users[0]->getProfile()));
+		
+	}
+	
+	public function testCanSaveProfile(){
+		
+	}
+	//setup test user
+	public function getTestUser(){
+		$u = new User();
+		$u->setUsername("Patrick");
+		$u->setPassword("123");
+		return $u;
 	}
 	
 }

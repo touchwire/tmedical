@@ -51,7 +51,7 @@ class Users_AdminController extends Zend_Controller_Action
 
     public function updateAction()
     {
-    	$form = new Touchwire_Form_User();
+    	$form = new Touchwire_Form_User('update');
     	
     	$id = $this->getRequest()->getParam('id');
     	

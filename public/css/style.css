@@ -121,6 +121,9 @@ p.style1 {font-family: 'UbuntuRegular', Arial, sans-serif;}
 /* -- Header -- */
 .header{
 	font-family:  'UbuntuCondensedRegular', Arial, sans-serif;
+	background: #F5F5F5;
+	border-bottom: 1px solid #EEEEEE;
+	padding: 5px;
 }
 .header h3{
 	padding-top: 5px;
@@ -135,6 +138,7 @@ margin: 0 auto;
 }
 /* -- Content -- */
 .content {
+	padding-top: 8px;
 	font-family: 'UbuntuRegular', Arial, sans-serif;
 }
 .content h1, h2, h3, h4, h5, h6{
@@ -147,6 +151,8 @@ margin: 0 auto;
 .footer p{
 	text-align: center;
 	font-family: 'UbuntuCondensedRegular', Arial, sans-serif;
+	border-top: 1px solid #EEEEEE;
+	padding: 10px;
 }
 /* forms */
 input{
@@ -156,7 +162,7 @@ input.button {
 	font-family: 'UbuntuRegular', Arial, sans-serif;
 }
 .blue-form{
-	background-color: #CAE1FF;
+	background-color: #F5F5F5;
 }
 
 .save{

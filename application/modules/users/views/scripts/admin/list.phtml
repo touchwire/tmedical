@@ -11,8 +11,11 @@
 	<table>
 		<thead>
 			<th></th>
+			<th>Username</th>
 			<th>Firstname</th>
 			<th>Lastname</th>
+			<th>Date Created</th>
+			<th>Date Modified</th>
 			<th></th>
 		</thead>
 	<?php  foreach ($users as $user): ?>
@@ -20,12 +23,15 @@
 			<td>
 			<?php echo $user->getId(); ?> 
 			</td>
+			<td><?php echo $user->getUsername(); ?> </td>
 			<td>
-		 	<?php echo $user->getFirstname(); ?>
+		 	<?php echo $user->getProfile()->getFirstname() ?>
 		 	</td>
 		 	<td>
-		 	<?php echo $user->getLastname(); ?>
+		 	<?php echo $user->getProfile()->getLastname() ?>
 		 	</td>
+		 	<td><?php echo  $user->getCreated()->format('jS M Y'); ?></td>
+		 	<td><?php //echo  $user->getCreated()->format('jS M Y'); ?></td>
 		 	<td>
 		 	<a href="<?php echo $this->url(array('action' => 'update', 'id' => $user->getId())); ?>">
         		Edit

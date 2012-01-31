@@ -22,14 +22,37 @@ class Profile{
 	 * @Column(type="string", length = 100)
 	 * @var string
 	 */
-	private $item;
+	private $firstname;
 	
 	/**
-	 * @Column(type="string")
+	 * @Column(type="string", length = 100)
 	 * @var string
 	 */
-	private $description;
+	private $lastname;
 	
+	/**
+	 * @Column(type="string", length = 10)
+	 * @var string
+	 */
+	private $gender;
+	
+	/**
+	 * @Column(type="string", length = 100)
+	 * @var string
+	 */
+	private $email;
+	
+	/**
+	 * @Column(type="string", length = 100)
+	 * @var string
+	 */
+	private $address;
+	
+	/**
+	 * @Column(type="string", length = 100)
+	 * @var string
+	 */
+	private $phone;
 	
 	/**
 	 * @return the $id
@@ -39,17 +62,45 @@ class Profile{
 	}
 
 	/**
-	 * @return the $item
+	 * @return the $firstname
 	 */
-	public function getItem() {
-		return $this->item;
+	public function getFirstname() {
+		return $this->firstname;
 	}
 
 	/**
-	 * @return the $description
+	 * @return the $lastname
 	 */
-	public function getDescription() {
-		return $this->description;
+	public function getLastname() {
+		return $this->lastname;
+	}
+
+	/**
+	 * @return the $gender
+	 */
+	public function getGender() {
+		return $this->gender;
+	}
+
+	/**
+	 * @return the $email
+	 */
+	public function getEmail() {
+		return $this->email;
+	}
+
+	/**
+	 * @return the $address
+	 */
+	public function getAddress() {
+		return $this->address;
+	}
+
+	/**
+	 * @return the $phone
+	 */
+	public function getPhone() {
+		return $this->phone;
 	}
 
 	/**
@@ -60,19 +111,49 @@ class Profile{
 	}
 
 	/**
-	 * @param string $item
+	 * @param string $firstname
 	 */
-	public function setItem($item) {
-		$this->item = $item;
+	public function setFirstname($firstname) {
+		$this->firstname = $firstname;
 	}
 
 	/**
-	 * @param string $description
+	 * @param string $lastname
 	 */
-	public function setDescription($description) {
-		$this->description = $description;
+	public function setLastname($lastname) {
+		$this->lastname = $lastname;
+	}
+
+	/**
+	 * @param string $gender
+	 */
+	public function setGender($gender) {
+		$this->gender = $gender;
+	}
+
+	/**
+	 * @param string $email
+	 */
+	public function setEmail($email) {
+		$this->email = $email;
+	}
+
+	/**
+	 * @param string $address
+	 */
+	public function setAddress($address) {
+		$this->address = $address;
+	}
+
+	/**
+	 * @param string $phone
+	 */
+	public function setPhone($phone) {
+		$this->phone = $phone;
 	}
 
 	
+	
+		
 	
 }

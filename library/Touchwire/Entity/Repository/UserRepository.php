@@ -2,6 +2,8 @@
 
 namespace Touchwire\Entity\Repository;
 
+use Touchwire\Entity\Profile;
+
 use Doctrine\ORM\EntityRepository,
 	Touchwire\Entity\User;
 
@@ -15,8 +17,19 @@ class UserRepository extends EntityRepository
 {
 	public function saveUser(User $user, $values){
 		
-		$user->setFirstname($values['firstname']);
-		$user->setLastname($values['lastname']);
+		$user->setUsername($values['username']);
+		$user->setPassword($values['password']);
+		
+		//add profile
+		$p = new Profile();
+		$p->setFirstname($values['firstname']);
+		$p->setLastname($values['lastname']);
+		$p->setGender($values['gender']);
+		$p->setEmail($values['email']);
+		$p->setPhone($values['phone']);
+		$p->setAddress($values['address']);
+		
+		$user->setProfile($p);
 		
 		$this->getEntityManager()->persist($user);
 	}

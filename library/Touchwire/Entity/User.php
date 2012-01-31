@@ -21,16 +21,16 @@ class User{
 	private $id;
 	
 	/**
-	 * @Column(type="string", length = 100)
+	 * @Column(type="string", unique=true, length = 100)
 	 * @var string
 	 */
-	private $firstname;
+	private $username;
 	
 	/**
-	 * @Column(type="string", length = 100)
+	 * @Column(type="string", length = 50)
 	 * @var string
 	 */
-	private $lastname;
+	private $password;
 	
 	/**
 	 * 
@@ -39,26 +39,43 @@ class User{
 	 */
 	private $profile;
 	
+	public function __construct(){
+		//generate created date
+		$this->created = new \DateTime(date("Y-m-d H:i:s"));
+	}
+		
+	/**
+	 * @Column(type="datetime", nullable= false)
+	 * @var datetime
+	 */
+	private $created;
 	
-	/**
-	 * @return the $profile
-	 */
-	public function getProfile() {
-		return $this->profile;
-	}
-
-	/**
-	 * @param field_type $profile
-	 */
-	public function setProfile($profile) {
-		$this->profile = $profile;
-	}
-
 	/**
 	 * @return the $id
 	 */
 	public function getId() {
 		return $this->id;
+	}
+
+	/**
+	 * @return the $username
+	 */
+	public function getUsername() {
+		return $this->username;
+	}
+
+	/**
+	 * @return the $password
+	 */
+	public function getPassword() {
+		return $this->password;
+	}
+
+	/**
+	 * @return the $profile
+	 */
+	public function getProfile() {
+		return $this->profile;
 	}
 
 	/**
@@ -69,39 +86,41 @@ class User{
 	}
 
 	/**
-	 * @return the $firstname
+	 * @param string $username
 	 */
-	public function getFirstname() {
-		return $this->firstname;
+	public function setUsername($username) {
+		$this->username = $username;
 	}
 
 	/**
-	 * @return the $lastname
+	 * @param string $password
 	 */
-	public function getLastname() {
-		return $this->lastname;
+	public function setPassword($password) {
+		$this->password = $password;
 	}
 
 	/**
-	 * @param string $firstname
+	 * @param field_type $profile
 	 */
-	public function setFirstname($firstname) {
-		$this->firstname = $firstname;
+	public function setProfile($profile) {
+		$this->profile = $profile;
+	}
+	
+	/**
+	 * @return the $created
+	 */
+	public function getCreated() {
+		return $this->created;
 	}
 
 	/**
-	 * @param string $lastname
+	 * @param \Touchwire\Entity\datetime $created
 	 */
-	public function setLastname($lastname) {
-		$this->lastname = $lastname;
+	public function setCreated($created) {
+		$this->created = $created;
 	}
 
-	/*public function __get($property){
-		return $this->property;
-	}
-	 
-	public function __set($property, $value){
-		$this->property = $value;		
-	}*/
+
+	
 	
 }
