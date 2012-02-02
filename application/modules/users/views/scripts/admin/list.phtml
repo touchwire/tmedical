@@ -25,13 +25,18 @@
 			</td>
 			<td><?php echo $user->getUsername(); ?> </td>
 			<td>
-		 	<?php echo $user->getProfile()->getFirstname() ?>
+		 	<?php echo $user->getProfile()->getFirstname(); ?>
 		 	</td>
 		 	<td>
-		 	<?php echo $user->getProfile()->getLastname() ?>
+		 	<?php echo $user->getProfile()->getLastname(); ?>
 		 	</td>
 		 	<td><?php echo  $user->getCreated()->format('jS M Y'); ?></td>
-		 	<td><?php //echo  $user->getCreated()->format('jS M Y'); ?></td>
+		 	<td><?php 
+		 	if($user->getUpdated() != null)
+		 		echo  $user->getUpdated()->format('jS M Y');
+		 	else 
+		 		echo '--'; ?>
+		 	</td>
 		 	<td>
 		 	<a href="<?php echo $this->url(array('action' => 'update', 'id' => $user->getId())); ?>">
         		Edit

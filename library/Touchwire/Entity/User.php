@@ -1,6 +1,7 @@
 <?php
-
 namespace  Touchwire\Entity;
+
+//use Doctrine\Common\Collections;
 /** 
  * @Entity(repositoryClass="Touchwire\Entity\Repository\UserRepository")
  * @Table(name="users")
@@ -13,9 +14,9 @@ use Doctrine\DBAL\Types\StringType;
 class User{
 	
 	/**
-	 * @Id 
-	 * @Column(type="integer", nullable = false) 
-	 * @GeneratedValue 
+	 * @Id
+	 * @Column(type="integer")
+     * @GeneratedValue(strategy="AUTO")
 	 * @var integer
 	 */
 	private $id;
@@ -34,22 +35,31 @@ class User{
 	
 	/**
 	 * 
-	 * @OneToOne(targetEntity="Profile",cascade={"persist", "remove"}  )
-	 * @JoinColumn(name="profile_id", referencedColumnName="id")
+	 * @OneToOne(targetEntity="Profile", mappedBy="user", cascade={"persist", "remove"}  )
+	 * 
 	 */
 	private $profile;
 	
-	public function __construct(){
-		//generate created date
-		$this->created = new \DateTime(date("Y-m-d H:i:s"));
-	}
-		
+	
 	/**
 	 * @Column(type="datetime", nullable= false)
 	 * @var datetime
 	 */
 	private $created;
 	
+	/**
+	 * @Column(type="datetime", nullable = true)
+	 * @var datetime
+	 * */
+	private $updated;
+	
+	public function __construct(){
+		//generate created date
+		$this->created = new \DateTime("now");
+	}
+		
+	
+		
 	/**
 	 * @return the $id
 	 */
@@ -119,8 +129,22 @@ class User{
 	public function setCreated($created) {
 		$this->created = $created;
 	}
+	/**
+	 * @return the $updated
+	 */
+	public function getUpdated() {
+		return $this->updated;
+	}
+
+	/**
+	 * @param \Touchwire\Entity\datetime $updated
+	 */
+	public function setUpdated($updated) {
+		$this->updated = new \DateTime("now");
+	}
 
 
+	
 	
 	
 }

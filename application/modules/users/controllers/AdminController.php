@@ -63,7 +63,7 @@ class Users_AdminController extends Zend_Controller_Action
     	
     	if ($this->getRequest()->isPost() && $form->isValid($_POST)) {
     		
-    		$this->userRepository->saveUser($user, $form->getValues());
+    		$this->userRepository->updateUser($user, $form->getValues());
     		
     		$this->entityManager->flush();
     		

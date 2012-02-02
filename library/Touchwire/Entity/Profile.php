@@ -12,8 +12,8 @@ namespace Touchwire\Entity;
 class Profile{
 	/**
 	 * @Id
-	 * @Column(type="integer", nullable = false)
-	 * @GeneratedValue
+	 * @Column(type="integer")
+     * @GeneratedValue(strategy="AUTO")
 	 * @var integer
 	 */
 	private $id;
@@ -53,6 +53,14 @@ class Profile{
 	 * @var string
 	 */
 	private $phone;
+	
+	
+	/**   The owning side has 'inversedBy'. Its table will have the foreign key.
+	 *
+	 * @OneToOne(targetEntity="User", inversedBy="profile")
+	 * @JoinColumn(name="profile_id", referencedColumnName="id")
+	 */
+	private $user;
 	
 	/**
 	 * @return the $id
@@ -104,6 +112,13 @@ class Profile{
 	}
 
 	/**
+	 * @return the $user
+	 */
+	public function getUser() {
+		return $this->user;
+	}
+
+	/**
 	 * @param number $id
 	 */
 	public function setId($id) {
@@ -152,8 +167,14 @@ class Profile{
 		$this->phone = $phone;
 	}
 
+	/**
+	 * @param field_type $user
+	 */
+	public function setUser($user) {
+		$this->user = $user;
+	}
+
 	
 	
-		
 	
 }

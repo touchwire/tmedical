@@ -9,6 +9,7 @@ class Touchwire_Form_User extends EasyBib_Form
 	 */
 	public function __construct($state = null)
 	{
+		
 		// form config
 		//$this->setMethod('POST');
 		//$this->setAction('/test/add');
@@ -29,20 +30,31 @@ class Touchwire_Form_User extends EasyBib_Form
 		$submit      = new Zend_Form_Element_Button('submit');
 		$cancel      = new Zend_Form_Element_Button('cancel');
 
-		echo $id;
+		
 		// config elements
 		$id->addValidator('digits');
-
+		
+		
+		
 		$username->setLabel('Username:')
-				 ->setRequired(true)
+				 //->setRequired(true)
 				 ->setAttribs(array('class' => 'input-text'));
 		
+		if($state != null) 
+		$username->setAttribs(array('disabled' => 'disabled'));
+		
 		$password->setLabel('Password:')
-		->setRequired(true)
+		//->setRequired(true)
 		->setAttribs(array('class' => 'input-text'));
 		
+		if($state != null)
+			$username->setAttribs(array('disabled' => 'disabled'));
+		
+		//disable elements on update
+		
+		
 		$password2->setLabel('Confirm Password:')
-		->setRequired(true)
+		//->setRequired(true)
 		->setAttribs(array('class' => 'input-text'));
 		
 		$firstname->setLabel('Firstname:')
@@ -76,49 +88,44 @@ class Touchwire_Form_User extends EasyBib_Form
 		$cancel->setLabel('Cancel')
 			->setAttribs(array('class' => 'small red nice button radius'));
 
-		// add account details display group
-		if($state == null){
-			//elements
-			$this->addElements(array(
-					$username, $password, $password2
-			));
-			//display group
-			$this->addDisplayGroup(
-					array('username', 'password', 'password2'), 
-					'account_details'
-			);
-			
-			$this->getDisplayGroup('account_details')->setLegend('Account Details')
-			->setAttribs(array('class' => 'blue-form'));
-		}
-		
-		// add remaining elements
+		// add elements
 		$this->addElements(array(
-				$id, $firstname, $lastname, $gender,
-				$email, $phone, $address,
+				$id, $username, $password, $password2,
+				$firstname, $lastname, $gender, 
+				$email, $phone, $address, 
 				$submit, $cancel
 		));
+
+		// add display group
+		$this->addDisplayGroup(
+				array('username', 'password', 'password2'), 
+				'account_details'
+		);
 		
-		//add personal detils display group
 		$this->addDisplayGroup(
 				array('firstname', 'lastname', 'gender'),
 				'personal_details'
 		);
 		
-		$this->getDisplayGroup('personal_details')->setLegend('Personal Details')
-		->setAttribs(array('class' => 'blue-form'));
-		
-		//add contact details display group
 		$this->addDisplayGroup(
 				array('email', 'phone', 'address'), 
 				'contact_details'
 		);
 		
-		$this->getDisplayGroup('contact_details')->setLegend('Contact Details')
+		$this->addDisplayGroup(array('submit', 'cancel'), 'buttons');
+		//$id = $this->getRequest()->getParam('id');
+		 
+		 
+		$this->getDisplayGroup('account_details')->setLegend('Account Details')
+			->setAttribs(array('class' => 'blue-form'));
+		
+		
+		$this->getDisplayGroup('personal_details')->setLegend('Personal Details')
 		->setAttribs(array('class' => 'blue-form'));
 		
-		$this->addDisplayGroup(array('submit', 'cancel'), 'buttons');
-				 
+		$this->getDisplayGroup('contact_details')->setLegend('Contact Details')
+		->setAttribs(array('class' => 'blue-form'));
+
 		// set decorators
 		EasyBib_Form_Decorator::setFormDecorator($this, EasyBib_Form_Decorator::BOOTSTRAP, 'submit', 'cancel');
 
@@ -136,7 +143,7 @@ class Touchwire_Form_User extends EasyBib_Form
 			'gender' => $user->getProfile()->getGender(),
 			'email' => $user->getProfile()->getEmail(),
 			'phone' => $user->getProfile()->getPhone(),
-			'address' => $user->getProfile()->getAddress(),
+				'address' => $user->getProfile()->getAddress(),
             );
         $this->setDefaults($values);
 	}

@@ -20,7 +20,7 @@ class UserRepository extends EntityRepository
 		$user->setUsername($values['username']);
 		$user->setPassword($values['password']);
 		
-		//add profile
+		//add profile -- refactor me
 		$p = new Profile();
 		$p->setFirstname($values['firstname']);
 		$p->setLastname($values['lastname']);
@@ -34,6 +34,22 @@ class UserRepository extends EntityRepository
 		$this->getEntityManager()->persist($user);
 	}
 	
+	public function updateUser(User $user, $values){
+		$em = $this->getEntityManager();
+		$proxy = $em->find('Touchwire\entity\User', array('profile_id' => $values['id']));
+		//$proxy = $em->getReference('\Touchwire\Entity\User', $values['id']); //refence profile id
+		$p = new Profile();
+		$p->setFirstname($values['firstname']);
+		$p->setLastname($values['lastname']);
+		$p->setGender($values['gender']);
+		$p->setEmail($values['email']);
+		$p->setPhone($values['phone']);
+		$p->setAddress($values['address']);
+		
+		$proxy->setProfile($p);
+		$proxy->setUpdated();
+		$this->getEntityManager()->persist($proxy);
+	}
 	
 	public function removeUser($id){
 		$em = $this->getEntityManager();
